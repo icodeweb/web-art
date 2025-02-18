@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(31, 31, 31);
+    color: yellow;
+}
+
+a {
+    color: yellow;
+}
+
+ul {
+    list-style: none;
+}
