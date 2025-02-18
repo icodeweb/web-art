@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Rotating Thing</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+        }
+
+        p,
+        h2,
+        h6 {
+            color: white;
+            position: absolute;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia voluptas sequi dolorem laboriosam? Laboriosam,
+        numquam minima hic ex eligendi temporibus ipsam consequatur iste amet nulla cumque, eum excepturi, non
+        odit.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore doloremque voluptatem sapiente magnam
+        recusandae officia magni eaque officiis, repellat neque praesentium ipsam rerum quas consectetur quo iste a
+        libero in!Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis id explicabo facere atque
+        neque dolorum dolorem, eveniet impedit nulla, aliquam, cumque maxime asperiores inventore ad dignissimos
+        consectetur eaque expedita magnam! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi quo
+        tenetur mollitia molestiae praesentium dolor nemo iusto quibusdam! Omnis, officiis! Excepturi eaque molestiae
+        aperiam sequi. Rerum unde cumque autem deserunt? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+        pariatur rem quos omnis ut suscipit fugiat rerum explicabo, provident iusto saepe corporis impedit. Debitis
+        porro exercitationem, id ipsa numquam sit.</p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Set up the scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create the geometry and material for the cube
+        const geometry = new THREE.TorusKnotGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true });
+        console.log(material);
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        // Set camera position
+        camera.position.z = 1;
+
+        // Animation function to rotate the cube
+        function animate() {
+            requestAnimationFrame(animate);
+
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        }
+
+        // Start the animation
+        animate();
+
+        // Handle resizing the window
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+</body>
+
+</html>
