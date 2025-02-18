@@ -1,6 +1,6 @@
-# Web Art Pages
+# Web Art
 
-### Web pages are the coolest canvas ever.
+### Web are the coolest canvas ever.
 
 This repository is a collection of my web art experiments—small creative dirty projects, interactive visuals, and unique designs .
 
