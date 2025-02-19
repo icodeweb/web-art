@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>control images opacity with mouse movement and scroll</title>
+    <style>
+        .pic {
+            width: 49.3vw;
+            height: 100vh;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- control images opacity with mouse movement and scroll -->
+    <img src="pic1.jpg" class="pic pic1">
+    <img src="pic2.jpg" class="pic pic2">
+    <img src="pic1.jpg" class="pic pic1">
+    <img src="pic2.jpg" class="pic pic2">
+    <script>
+        let pic = document.querySelector('.pic1'),
+            piic = document.querySelector('.pic2');
+
+        function mousemove() {
+            window.addEventListener('mousemove', (event) => {
+                pic.style.opacity = (event.clientX * .001)
+                piic.style.opacity = (event.clientY * .001)
+            })
+        }
+        mousemove()
+
+        function scroll() {
+            window.addEventListener('scroll', () => {
+                pic.style.opacity = (window.scrollY) * .001
+                piic.style.opacity = (window.scrollY) * .001
+
+            });
+        }
+        scroll()
+    </script>
+</body>
+
+</html>

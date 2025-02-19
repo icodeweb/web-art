@@ -16,6 +16,7 @@
         h6 {
             color: white;
             position: absolute;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
 
         canvas {
@@ -38,9 +39,24 @@
         porro exercitationem, id ipsa numquam sit.</p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
+        let mouseInteration = false
+        let mouseX;
+        let mouseY;
+        function updateCamera(mouseX, mouseY) {
+            camera = new THREE.PerspectiveCamera((mouseX / 2), window.innerWidth / window.innerHeight, 0.1, 1000);
+        }
+        if (mouseInteration) {
+            window.addEventListener('mousemove', (event) => {
+                // mouseX = event.clientX;
+                mouseX = Math.random() * 300
+                mouseY = event.clientY;
+                updateCamera(mouseX, mouseY)
+            })
+        }
+
         // Set up the scene, camera, and renderer
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        let camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
