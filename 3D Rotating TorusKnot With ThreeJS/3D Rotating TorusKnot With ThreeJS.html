@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Rotating Thing</title>
+    <title>3D Rotating TorusKnot</title>
     <style>
         body {
             margin: 0;
@@ -36,23 +36,43 @@
         tenetur mollitia molestiae praesentium dolor nemo iusto quibusdam! Omnis, officiis! Excepturi eaque molestiae
         aperiam sequi. Rerum unde cumque autem deserunt? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
         pariatur rem quos omnis ut suscipit fugiat rerum explicabo, provident iusto saepe corporis impedit. Debitis
-        porro exercitationem, id ipsa numquam sit.</p>
+        porro exercitationem, id ipsa numquam sit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi,
+        quisquam nesciunt. Ullam, id consequuntur cumque enim quasi unde accusantium iusto quibusdam tempore nam beatae
+        vitae illo perferendis aliquid cupiditate magnam.</p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        let mouseInteration = false
         let mouseX;
         let mouseY;
         function updateCamera(mouseX, mouseY) {
-            camera = new THREE.PerspectiveCamera((mouseX / 2), window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera = new THREE.PerspectiveCamera((mouseX * mouseY) / 1000, window.innerWidth / window.innerHeight, 0.1, 1000);
+            console.log("camera position:", "X", mouseX, "Y", mouseY);
         }
-        if (mouseInteration) {
-            window.addEventListener('mousemove', (event) => {
-                // mouseX = event.clientX;
-                mouseX = Math.random() * 300
-                mouseY = event.clientY;
-                updateCamera(mouseX, mouseY)
-            })
+        let mouseInteration = false;
+
+        function onMouseMove(event) {
+            if (mouseInteration) {
+                let mouseX = event.clientX;
+                let mouseY = event.clientY;
+                updateCamera(mouseX, mouseY);
+            }
         }
+
+        function onShiftKeyDown(event) {
+            if (event.key === "Shift") {
+                mouseInteration = true;
+                window.addEventListener("mousemove", onMouseMove); // Attach once
+            }
+        }
+
+        function onShiftKeyUp(event) {
+            if (event.key === "Shift") {
+                mouseInteration = false;
+                window.removeEventListener("mousemove", onMouseMove); // Properly remove
+            }
+        }
+
+        window.addEventListener("keydown", onShiftKeyDown);
+        window.addEventListener("keyup", onShiftKeyUp);
 
         // Set up the scene, camera, and renderer
         const scene = new THREE.Scene();
@@ -63,8 +83,7 @@
 
         // Create the geometry and material for the cube
         const geometry = new THREE.TorusKnotGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true });
-        console.log(material);
+        let material = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true });
         const cube = new THREE.Mesh(geometry, material);
         scene.add(cube);
 
@@ -74,22 +93,26 @@
         // Animation function to rotate the cube
         function animate() {
             requestAnimationFrame(animate);
-
             cube.rotation.x += 0.01;
             cube.rotation.y += 0.01;
+            // let rgbValue = cube.rotation.x * 10;
+            // let rgbValue2 = Math.random() * 100;
+            // // console.log(document.querySelector("p").style.color);
+            // document.querySelector("p").style.color = `rgb(${rgbValue * 5},${(rgbValue2 * 50) / 200},${rgbValue2 * 8})`
 
             renderer.render(scene, camera);
         }
 
         // Start the animation
         animate();
-
         // Handle resizing the window
         window.addEventListener('resize', () => {
             renderer.setSize(window.innerWidth, window.innerHeight);
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
         });
+
+
     </script>
 </body>
 
