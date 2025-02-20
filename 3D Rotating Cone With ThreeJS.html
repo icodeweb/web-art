@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Rotating Cone With ThreeJS</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            /* overflow: hidden; */
+        }
+
+        body {
+            background-color: rgb(38, 38, 38);
+        }
+
+        p {
+            font-size: 0px;
+            font-style: italic;
+            color: #00ff00;
+            position: absolute;
+        }
+
+        .inputs {
+            width: 55%;
+            border: 1px black solid;
+            background-color: rgb(95, 196, 7);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        label {
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+        }
+
+        .input {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input input {
+            width: 180px;
+        }
+    </style>
+</head>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
+    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
+    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
+    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
+    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
+    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
+    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
+
+<body>
+    <div class="inputs">
+        <div class="input">
+            <label for="radiusInput">radiusInput</label>
+            <input id="radiusInput" type="range" value="3" min="0" max="20">
+        </div>
+        <div class="input">
+            <label for="heightInput">heightInput</label>
+            <input id="heightInput" type="range" value="8" min="0" max="20">
+        </div>
+        <div class="input">
+            <label for="radialSegmentsInput">radialSegmentsInput</label>
+            <input id="radialSegmentsInput" type="range" value="20" min="0" max="100">
+        </div>
+        <div class="input">
+            <label for="heightSegmentsInput">heightSegmentsInput</label>
+            <input id="heightSegmentsInput" type="range" value="8" min="0" max="100">
+        </div>
+        <div class="input">
+            <label for="openEndedInput">openEnded</label>
+            <input type="checkbox" id="openEndedInput">
+        </div>
+        <div class="input">
+            <label for="thetaStartInput">thetaStartInput</label>
+            <input id="thetaStartInput" type="range" value="0" min="0" max="20">
+        </div>
+        <div class="input">
+            <label for="thetaLengthInput">thetaLengthInput</label>
+            <input id="thetaLengthInput" type="range" value="2" min="0" max="20">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+
+        let pElemnts = document.querySelectorAll("p")
+        pElemnts.forEach((pElemnt, index) => {
+            pElemnt.style.top = (index * window.innerHeight / pElemnts.length) + 'px'
+            pElemnt.style.opacity = (index * 0.1)
+        })
+
+        let scene = new THREE.Scene();
+        let camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
+        let renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        let radius = 3;
+        let height = 8;
+        let radialSegments = 20;
+        let heightSegments = 8;
+        let openEnded = false;
+        let thetaStart = 0;
+        let thetaLength = 2 * Math.PI;
+
+        let geometry = new THREE.ConeGeometry(
+            radius,
+            height,
+            radialSegments,
+            heightSegments,
+            openEnded,
+            thetaStart,
+            thetaLength
+        );
+
+        let material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+        let cone = new THREE.Mesh(geometry, material);
+        scene.add(cone);
+
+        // Set camera position
+        camera.position.z = 8;
+        camera.position.y = 0;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            cone.rotation.x += 0.01;
+            cone.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+
+        // Handle window resizing
+        window.addEventListener('resize', () => {
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+        function updateGeometryAndRender() {
+            let newGeometry = new THREE.ConeGeometry(
+                radius,
+                height,
+                radialSegments,
+                heightSegments,
+                openEnded,
+                thetaStart,
+                thetaLength
+            );
+            cone.geometry.dispose();
+            cone.geometry = newGeometry;
+            renderer.render(scene, camera);
+        }
+
+        let inputs = document.querySelectorAll("input").forEach(input => {
+            input.addEventListener('input', (event) => {
+                let selectedParameter
+                if (input.id === "radiusInput") {
+                    radius = parseFloat(event.target.value);
+                } else if (input.id === "heightInput") {
+                    height = parseFloat(event.target.value);
+                } else if (input.id === "radialSegmentsInput") {
+                    radialSegments = parseFloat(event.target.value);
+                } else if (input.id === "heightSegmentsInput") {
+                    heightSegments = parseFloat(event.target.value);
+                } else if (input.id === "thetaStartInput") {
+                    thetaStart = parseFloat(event.target.value);
+                } else if (input.id === "thetaLengthInput") {
+                    thetaLength = parseFloat(event.target.value);
+                } else {
+                    if (event.target.checked) {
+                        openEnded = true;
+                    } else {
+                        openEnded = false
+                    }
+                }
+                updateGeometryAndRender()
+            });
+        })
+    </script>
+</body>
+
+</html>
