@@ -10,105 +10,245 @@
             margin: 0px;
             padding: 0px;
             box-sizing: border-box;
-            /* overflow: hidden; */
         }
 
-        body {
-            background-color: rgb(38, 38, 38);
-        }
-
-        p {
-            font-size: 0px;
-            font-style: italic;
-            color: #00ff00;
+        #toggleInputs {
             position: absolute;
+            right: 0px;
+            top: 0px;
+            padding: 3px;
+            border: none;
+            font-size: 14px;
+            font-family: monospace;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .workspace {
+            display: flex;
+            flex-direction: row-reverse;
+            height: 100vh;
+            width: 100%;
         }
 
         .inputs {
-            width: 55%;
+            width: 40%;
             border: 1px black solid;
-            background-color: rgb(95, 196, 7);
-            display: flex;
+            background-color: rgb(93, 179, 17);
+            display: none;
             flex-direction: column;
-            gap: 10px;
-            padding: 20px;
+            gap: 12px;
+            padding: 1rem;
+            border: 1.5px black solid;
+            justify-content: space-between;
         }
 
         label {
-            color: black;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: 500;
+            font-size: 14px;
+            font-family: monospace;
+            font-weight: 600;
         }
 
         .input {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 8px;
+            width: 220px;
         }
 
-        .input input {
-            width: 180px;
+        input[type="range"] {
+            -webkit-appearance: none;
+            background: #ddd;
+            border: 1.5px black solid;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 10px;
+            background: rgb(23, 118, 4);
+            cursor: pointer;
+            transition: 0.2s ease-in-out;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: rgb(35, 181, 6);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:active {
+            background: rgb(14, 69, 3);
+            transform: scale(1.2);
+        }
+
+        .show {
+            display: block;
+        }
+
+        .custom-checkbox {
+            display: flex;
+            gap: 20px;
+            padding: 10px 0px;
+        }
+
+        /* Hide the native checkbox */
+        .custom-checkbox input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkmark */
+        .custom-checkbox .checkmark {
+            position: relative;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: row;
+            vertical-align: middle;
+            margin-right: 8px;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        /* When the checkbox is hovered, add a subtle change */
+        .custom-checkbox:hover .checkmark {
+            background-color: rgb(202, 202, 202);
+        }
+
+        /* When the checkbox is checked, change the background */
+        .custom-checkbox input[type="checkbox"]:checked+.checkmark {
+            background-color: rgb(23, 118, 4);
+            border-color: rgb(23, 118, 4);
+        }
+
+        /* Create the tick (using pseudo-element) */
+        .custom-checkbox .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Display the tick when checked */
+        .custom-checkbox input[type="checkbox"]:checked+.checkmark:after {
+            display: block;
+        }
+
+        /* Style the tick */
+        .custom-checkbox .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid rgb(255, 255, 255);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
         }
     </style>
 </head>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
-    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
-    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
-    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
-    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
-    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit ea tempore ullam ipsa neque hic architecto
-    debitis porro labore temporibus. Atque itaque excepturi odio! Corrupti nam sapiente quis debitis non?</p>
 
 <body>
-    <div class="inputs">
-        <div class="input">
-            <label for="radiusInput">radiusInput</label>
-            <input id="radiusInput" type="range" value="3" min="0" max="20">
-        </div>
-        <div class="input">
-            <label for="heightInput">heightInput</label>
-            <input id="heightInput" type="range" value="8" min="0" max="20">
-        </div>
-        <div class="input">
-            <label for="radialSegmentsInput">radialSegmentsInput</label>
-            <input id="radialSegmentsInput" type="range" value="20" min="0" max="100">
-        </div>
-        <div class="input">
-            <label for="heightSegmentsInput">heightSegmentsInput</label>
-            <input id="heightSegmentsInput" type="range" value="8" min="0" max="100">
-        </div>
-        <div class="input">
-            <label for="openEndedInput">openEnded</label>
-            <input type="checkbox" id="openEndedInput">
-        </div>
-        <div class="input">
-            <label for="thetaStartInput">thetaStartInput</label>
-            <input id="thetaStartInput" type="range" value="0" min="0" max="20">
-        </div>
-        <div class="input">
-            <label for="thetaLengthInput">thetaLengthInput</label>
-            <input id="thetaLengthInput" type="range" value="2" min="0" max="20">
+    <div class="workspace">
+        <button id="toggleInputs">Parameters</button>
+        <div class="inputs">
+            <div class="input">
+                <label for="radiusInput">radius</label>
+                <input id="radiusInput" type="range" value="3" min="0" max="20">
+            </div>
+            <div class="input">
+                <label for="heightInput">height</label>
+                <input id="heightInput" type="range" value="8" min="0" max="20">
+            </div>
+            <div class="input">
+                <label for="radialSegmentsInput">radial segments</label>
+                <input id="radialSegmentsInput" type="range" value="20" min="0" max="100">
+            </div>
+            <div class="input">
+                <label for="heightSegmentsInput">height segments</label>
+                <input id="heightSegmentsInput" type="range" value="8" min="0" max="100">
+            </div>
+            <div class="input">
+                <label for="thetaStartInput">theta start</label>
+                <input id="thetaStartInput" type="range" value="0" min="0" max="20">
+            </div>
+            <div class="input">
+                <label for="thetaLengthInput">theta length</label>
+                <input id="thetaLengthInput" type="range" value="2" min="0" max="20">
+            </div>
+            <div class="input">
+                <label for="cameraPositionXInput">camera position X</label>
+                <input id="cameraPositionXInput" type="range" value="0" min="-10" max="10">
+            </div>
+            <div class="input">
+                <label for="cameraPositionZInput">camera position Z</label>
+                <input id="cameraPositionZInput" type="range" value="8" min="0" max="20">
+            </div>
+            <div class="input">
+                <label for="cameraPositionYInput">camera position Y</label>
+                <input id="cameraPositionYInput" type="range" value="0" min="0" max="10">
+            </div>
+            <div class="input">
+                <label for="fovInput">fov</label>
+                <input id="fovInput" type="range" value="65" min="0" max="360">
+            </div>
+            <div class="input">
+                <label for="rotationXInput">rotation X</label>
+                <input id="rotationXInput" type="range" value="1" min="0" max="100">
+            </div>
+            <div class="input">
+                <label for="rotationYInput">rotation Y</label>
+                <input id="rotationYInput" type="range" value="1" min="0" max="100">
+            </div>
+            <div class="input">
+                <label for="rotationZInput">rotation Z</label>
+                <input id="rotationZInput" type="range" value="1" min="0" max="100">
+            </div>
+            <div class="input">
+                <label for="colorRInput">color r</label>
+                <input id="colorRInput" type="range" value="0" min="0" max="10">
+            </div>
+            <div class="input">
+                <label for="colorGInput">color g</label>
+                <input id="colorGInput" type="range" value="10" min="0" max="10">
+            </div>
+            <div class="input">
+                <label for="colorBInput">color b</label>
+                <input id="colorBInput" type="range" value="0" min="0" max="10">
+            </div>
+            <div class="input">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="openEndedInput">
+                    <span class="checkmark"></span>
+                    open Ended
+                </label>
+            </div>
+            <div class="input">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="wireframeInput" checked>
+                    <span class="checkmark"></span>
+                    wireframe
+                </label>
+            </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-
-        let pElemnts = document.querySelectorAll("p")
-        pElemnts.forEach((pElemnt, index) => {
-            pElemnt.style.top = (index * window.innerHeight / pElemnts.length) + 'px'
-            pElemnt.style.opacity = (index * 0.1)
-        })
+        let inputsElement = document.querySelector(".inputs");
+        document.getElementById("toggleInputs").addEventListener("click", () => {
+            inputsElement.classList.toggle("show");
+        });
 
         let scene = new THREE.Scene();
         let camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
         let renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+        document.querySelector(".workspace").appendChild(renderer.domElement);
 
         let radius = 3;
         let height = 8;
@@ -133,17 +273,23 @@
         scene.add(cone);
 
         // Set camera position
+        camera.position.x = 0;
         camera.position.z = 8;
         camera.position.y = 0;
-
         // Animation loop
+        let XrotationIncrement = 0.01;
+        let YrotationIncrement = 0.01;
+        let ZrotationIncrement = 0.01;
+
         function animate() {
             requestAnimationFrame(animate);
-            cone.rotation.x += 0.01;
-            cone.rotation.y += 0.01;
+            cone.rotation.x += XrotationIncrement;
+            cone.rotation.y += YrotationIncrement;
+            cone.rotation.z += ZrotationIncrement;
             renderer.render(scene, camera);
         }
         animate();
+
 
 
         // Handle window resizing
@@ -166,34 +312,39 @@
             );
             cone.geometry.dispose();
             cone.geometry = newGeometry;
+            camera.updateProjectionMatrix();
             renderer.render(scene, camera);
         }
 
-        let inputs = document.querySelectorAll("input").forEach(input => {
+        document.querySelectorAll("input").forEach(input => {
             input.addEventListener('input', (event) => {
-                let selectedParameter
-                if (input.id === "radiusInput") {
-                    radius = parseFloat(event.target.value);
-                } else if (input.id === "heightInput") {
-                    height = parseFloat(event.target.value);
-                } else if (input.id === "radialSegmentsInput") {
-                    radialSegments = parseFloat(event.target.value);
-                } else if (input.id === "heightSegmentsInput") {
-                    heightSegments = parseFloat(event.target.value);
-                } else if (input.id === "thetaStartInput") {
-                    thetaStart = parseFloat(event.target.value);
-                } else if (input.id === "thetaLengthInput") {
-                    thetaLength = parseFloat(event.target.value);
-                } else {
-                    if (event.target.checked) {
-                        openEnded = true;
-                    } else {
-                        openEnded = false
-                    }
-                }
-                updateGeometryAndRender()
+                const { id, value, checked } = event.target;
+                const parsedValue = parseFloat(value);
+                const updateMap = {
+                    radiusInput: () => radius = parsedValue,
+                    heightInput: () => height = parsedValue,
+                    radialSegmentsInput: () => radialSegments = parsedValue,
+                    heightSegmentsInput: () => heightSegments = parsedValue,
+                    thetaStartInput: () => thetaStart = parsedValue,
+                    thetaLengthInput: () => thetaLength = parsedValue * Math.PI,
+                    cameraPositionXInput: () => camera.position.x = parsedValue,
+                    cameraPositionYInput: () => camera.position.y = parsedValue,
+                    cameraPositionZInput: () => camera.position.z = parsedValue,
+                    openEndedInput: () => openEnded = checked,
+                    wireframeInput: () => material.wireframe = checked,
+                    fovInput: () => camera.fov = parsedValue,
+                    rotationXInput: () => XrotationIncrement = (parsedValue / 1000),
+                    rotationYInput: () => YrotationIncrement = (parsedValue / 1000),
+                    rotationZInput: () => ZrotationIncrement = (parsedValue / 1000),
+                    colorRInput: () => material.color.r = (parsedValue / 10),
+                    colorGInput: () => material.color.g = (parsedValue / 10),
+                    colorBInput: () => material.color.b = (parsedValue / 10),
+                };
+
+                if (updateMap[id]) updateMap[id]();
+                updateGeometryAndRender();
             });
-        })
+        });
     </script>
 </body>
 
