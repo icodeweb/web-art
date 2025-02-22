@@ -1,0 +1,14 @@
+.window {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    background-image: url(image.png);
+    right: -5%;
+    bottom: -5%;
+    background-size: cover;
+}
+
+body {
+    background-color: aquamarine;
+    overflow: hidden;
+}
