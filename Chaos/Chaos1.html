@@ -1,0 +1,269 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chaotic Web</title>
+    <style>
+        body {
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff;
+            font-family: Helvetica, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            transform: rotate(30deg);
+            left: calc(50% - 100px);
+            top: calc(50% - 50px);
+            mix-blend-mode: difference;
+            z-index: -1;
+        }
+        p {
+            position: absolute;
+            font-size: 60px;
+            line-height: 1;
+            mix-blend-mode: exclusion;
+            z-index: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+
+    <script>
+        const gifCount = 56;
+        const nameOptions = [
+            `"No Masters, No Slaves"`,
+            `"Burn the Chains"`,
+            `"Anarchy Rises"`,
+            `"Revolt in Every Breath"`,
+            `"Break the System"`,
+            `"Defy Authority"`,
+            `"Order through Chaos"`,
+            `"Rage against Control"`,
+            `"Freedom or Nothing"`,
+            `"Dismantle the State"`
+        ];
+
+        const rateOptions = [
+            `"Revolt in Every Breath"`,
+            `"Power to None"`,
+            `"Chaos is Liberty"`,
+            `"Disrupt the Order"`,
+            `"Crush the Oppressors"`,
+            `"Anarchy Prevails"`,
+            `"No Gods, No Masters"`,
+            `"Rebellion Brews"`,
+            `"Revolt Now"`,
+            `"Destroy the Chains"`
+        ];
+
+        const fieldOptions = [
+            `"Break the System"`,
+            `"Dismantle the State"`,
+            `"Resist the Norm"`,
+            `"Defy Authority"`,
+            `"Tear Down the Walls"`,
+            `"Revolt Now"`,
+            `"No Control"`,
+            `"Challenge Everything"`,
+            `"Break Free"`,
+            `"Rebel to Exist"`
+        ];
+
+        function getRandomGIF() {
+            let randomIndex = Math.floor(Math.random() * gifCount) + 1;
+            return `media/image${randomIndex}.gif`;
+        }
+
+        function getRandomText(options) {
+            return options[Math.floor(Math.random() * options.length)];
+        }
+
+            document.body.style.backgroundImage = `url('${getRandomGIF()}')`;
+
+
+        let htmlall = "";
+        setInterval(() => {
+
+            }, 1000);
+            document.body.style.backgroundImage = `url('${getRandomGIF()}')`;
+
+        for (let i = 0; i < 4; i++) {
+        const randomName = getRandomText(nameOptions);
+        const randomRate = getRandomText(rateOptions);
+        const randomField = getRandomText(fieldOptions);
+
+        html = `
+        <img style="width: 500px; left: ${Math.random() * 80}%; top: ${Math.random() * 80}%"
+            src="${getRandomGIF()}">
+        <p class="parOne" style="left: ${Math.random() * 80}%; top: ${Math.random() * 80}%;">${randomName}</p>
+        <p class="parTwo" style="left: ${Math.random() * 80}%; top: ${Math.random() * 80}%;">${randomRate}</p>
+        <p class="parThree" style="left: ${Math.random() * 80}%; top: ${Math.random() * 80}%;">${randomField}</p>`
+        }
+        htmlall += html;
+
+        document.body.innerHTML += htmlall;
+
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chaos2</title>
+    <style>
+        body {
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff;
+            font-family: Helvetica, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            mix-blend-mode: difference;
+            animation: spin 10s linear infinite, move 5s ease-in-out infinite alternate;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            z-index: -1;
+        }
+
+        p {
+            position: absolute;
+            font-size: 60px;
+            line-height: 1;
+            mix-blend-mode: exclusion;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out forwards;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes move {
+            from {
+                transform: translateX(0) translateY(0);
+            }
+
+            to {
+                transform: translateX(20px) translateY(20px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        const gifCount = 56;
+        const nameOptions = [
+            `"No Masters, No Slaves"`, `"Burn the Chains"`, `"Anarchy Rises"`,
+            `"Revolt in Every Breath"`, `"Break the System"`, `"Defy Authority"`,
+            `"Order through Chaos"`, `"Rage against Control"`, `"Freedom or Nothing"`,
+            `"Dismantle the State"`
+        ];
+
+        const rateOptions = [
+            `"Revolt in Every Breath"`, `"Power to None"`, `"Chaos is Liberty"`,
+            `"Disrupt the Order"`, `"Crush the Oppressors"`, `"Anarchy Prevails"`,
+            `"No Gods, No Masters"`, `"Rebellion Brews"`, `"Revolt Now"`,
+            `"Destroy the Chains"`
+        ];
+
+        const fieldOptions = [
+            `"Break the System"`, `"Dismantle the State"`, `"Resist the Norm"`,
+            `"Defy Authority"`, `"Tear Down the Walls"`, `"Revolt Now"`,
+            `"No Control"`, `"Challenge Everything"`, `"Break Free"`,
+            `"Rebel to Exist"`
+        ];
+
+        function getRandomGIF() {
+            let randomIndex = Math.floor(Math.random() * gifCount) + 1;
+            return `/assets/usMedia/image${randomIndex}.gif`;
+        }
+
+        function getRandomText(options) {
+            return options[Math.floor(Math.random() * options.length)];
+        }
+
+        function createChaosElement() {
+            const randomName = getRandomText(nameOptions);
+            const randomRate = getRandomText(rateOptions);
+            const randomField = getRandomText(fieldOptions);
+
+            const img = document.createElement('img');
+            img.src = getRandomGIF();
+            img.style.left = `${Math.random() * 80}%`;
+            img.style.top = `${Math.random() * 80}%`;
+            img.style.transform = `rotate(${Math.random() * 360}deg)`;
+            img.style.animationDelay = `${Math.random() * 5}s`;
+            document.body.appendChild(img);
+
+            const p1 = document.createElement('p');
+            p1.textContent = randomName;
+            p1.style.left = `${Math.random() * 80}%`;
+            p1.style.top = `${Math.random() * 80}%`;
+            p1.style.animationDelay = `${Math.random() * 5}s`;
+            document.body.appendChild(p1);
+
+            const p2 = document.createElement('p');
+            p2.textContent = randomRate;
+            p2.style.left = `${Math.random() * 80}%`;
+            p2.style.top = `${Math.random() * 80}%`;
+            p2.style.animationDelay = `${Math.random() * 5}s`;
+            document.body.appendChild(p2);
+
+            const p3 = document.createElement('p');
+            p3.textContent = randomField;
+            p3.style.left = `${Math.random() * 80}%`;
+            p3.style.top = `${Math.random() * 80}%`;
+            p3.style.animationDelay = `${Math.random() * 5}s`;
+            document.body.appendChild(p3);
+        }
+
+        function startChaos() {
+            setInterval(() => {
+                createChaosElement();
+            }, 1000);
+        }
+
+        document.body.style.backgroundImage = `url('${getRandomGIF()}')`;
+
+        startChaos();
+    </script>
+</body>
+
+</html>
