@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weird Chaos grid</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-gap: 10px;
+        }
+
+        .container img {
+            /* width: 100px; */
+            height: 100px;
+            object-fit: cover;
+            animation: spin 10s infinite linear, float 10s infinite ease-in-out;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(2000);
+            }
+
+            50% {
+                transform: translateY(-400px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.querySelector('.container');
+
+            for (let i = 1; i <= 56; i++) {
+                let img = document.createElement('img');
+                img.src = `media/image${i}.gif`;
+                img.style.left = `${Math.random() * 100}vw`;
+                img.style.top = `${Math.random() * 100}vh`;
+                img.style.transform = `rotate(${Math.random() * 360}deg)`;
+                img.style.animationDuration = `${Math.random() * 10 + 2}s`;
+                container.appendChild(img);
+            }
+        });
+    </script>
+</body>
+
+</html>
