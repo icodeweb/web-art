@@ -18,12 +18,17 @@ ul {
     list-style: none;
     outline: rgb(0, 0, 255) solid 1px;
     width: 70%;
+    /* overflow-y: hidden; */
+    overflow-x: hidden;
+    padding: 0px;
+    padding: 20px;
 }
+
 
 li {
     margin-bottom: 20px;
     outline: rgb(0, 0, 255) dotted .5px;
-
+    padding-left: 20px;
 }
 
 .bottomLine {
@@ -53,4 +58,9 @@ li {
     left: 0px;
     padding: 20px;
     outline: rgb(0, 0, 255) solid 1px;
+}
+
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+    width: 0px;
 }
