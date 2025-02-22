@@ -20,7 +20,6 @@ ul {
     width: 70%;
     /* overflow-y: hidden; */
     overflow-x: hidden;
-    padding: 0px;
     padding: 20px;
 }
 
@@ -63,4 +62,45 @@ li {
 /* Width of the scrollbar */
 ::-webkit-scrollbar {
     width: 0px;
+}
+
+
+#gif {
+    width: 50vw;
+    height: 100vh;
+}
+
+/* 
+#lowGif {
+    width: 50vw;
+    height: 100vh;
+    position: absolute;
+    filter: blur(100px);
+    filter: contrast(.1);
+    filter: invert(1);
+    opacity: .5;
+    z-index: -10;
+    left: 8px;
+    display: none;
+} 
+*/
+
+@media (max-width:800px) {
+    body {
+        display: flex;
+        flex-direction: row;
+    }
+
+    ul {
+        z-index: 100;
+        margin-top: 200px;
+    }
+
+    #gif {
+        width: 100vw;
+        height: 250px;
+        left: 0px;
+        position: absolute;
+        z-index: -1;
+    }
 }
