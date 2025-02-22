@@ -57,6 +57,7 @@ li {
     left: 0px;
     padding: 20px;
     outline: rgb(0, 0, 255) solid 1px;
+    color: yellow;
 }
 
 /* Width of the scrollbar */
