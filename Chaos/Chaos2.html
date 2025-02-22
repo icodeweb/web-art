@@ -63,10 +63,9 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const container = document.querySelector('.container');
-
             for (let i = 1; i <= 56; i++) {
                 let img = document.createElement('img');
-                img.src = `media/image${i}.gif`;
+                img.src = `/assets/usMedia/image${i}.gif`;
                 img.style.left = `${Math.random() * 100}vw`;
                 img.style.top = `${Math.random() * 100}vh`;
                 img.style.transform = `rotate(${Math.random() * 360}deg)`;
