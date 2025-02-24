@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColorThief</title>
+    <style>
+        * {
+            font-family: monospace;
+            overflow: hidden;
+        }
+
+        .color {
+            width: 85px;
+            height: 85px;
+            border-radius: 100px;
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            font-size: 10px;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .palette {
+            display: flex;
+            gap: 10px;
+            width: 500px;
+            flex-wrap: wrap;
+        }
+
+        .output {
+            display: flex;
+            gap: 30px;
+            width: fit-content;
+        }
+
+        body {
+            background-color: darkcyan;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding-top: 150px;
+        }
+
+        span:first-of-type {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <span>trying out <a href="https://github.com/lokesh/color-thief">color-thief</a>.</span>
+    <img src="download.png" id="img">
+    <div class="output">
+        <div class="dominantColor color">dominantColor</div>
+        <div class="palette"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <script>
+
+        const colorThief = new ColorThief();
+        const img = document.querySelector('#img');
+
+        if (img.complete) {
+            colorThief.getColor(img);
+        } else {
+            image.addEventListener('load', function () {
+                colorThief.getColor(img);
+            });
+        }
+        let dominantColor = colorThief.getColor(img);
+        let palette = colorThief.getPalette(img);
+
+        let uniquePalette = Array.from(new Set(palette.map(JSON.stringify)), JSON.parse);
+
+
+        let dominantColorElemnt = document.querySelector(".dominantColor")
+        dominantColorElemnt.style.backgroundColor = `rgb(${dominantColor[0]},${dominantColor[1]} ,${dominantColor[2]})`
+
+        let paletteContiner = document.querySelector(".palette");
+        uniquePalette.forEach((color, index) => {
+            let colorElemnt = document.createElement("div");
+            colorElemnt.classList.add("color")
+            colorElemnt.style.backgroundColor = `rgb(${color[0]},${color[1]} ,${color[2]})`
+            colorElemnt.innerHTML += `(${color[0]}, ${color[1]}, ${color[2]})`
+            paletteContiner.appendChild(colorElemnt)
+        });
+    </script>
+</body>
+
+</html>

@@ -58,6 +58,16 @@ li {
     left: 0px;
     padding: 20px;
     outline: rgb(0, 0, 255) solid 1px;
+    cursor: pointer;
+}
+
+#title:hover {
+    text-decoration: line-through;
+}
+
+#title:hover~p {
+    display: block;
+
 }
 
 /* Width of the scrollbar */
@@ -104,4 +114,19 @@ li {
         position: absolute;
         z-index: -1;
     }
+
+    p {
+        display: none;
+    }
+}
+
+p {
+    position: absolute;
+    font-size: 10px;
+    width: 500px;
+    left: 100px;
+    top: 580px;
+    outline: rgb(0, 0, 255) solid 1px;
+    padding: 10px 20px;
+    display: none;
 }

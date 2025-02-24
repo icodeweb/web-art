@@ -11,4 +11,15 @@
 body {
     background-color: aquamarine;
     overflow: hidden;
+    font-family: monospace;
+    color: blue;
+    font-size: 10px;
+}
+
+span {
+    position: absolute;
+    left: 90%;
+    top: 90%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
 }
