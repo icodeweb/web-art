@@ -1,0 +1,33 @@
+body {
+    background-color: aqua;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin: 5%;
+    overflow: hidden;
+}
+
+.imageContainer {
+    margin-bottom: 2%;
+    cursor: pointer;
+}
+
+.pixel {
+    color: rgb(156, 3, 162);
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    text-align: center;
+}
+
+a {
+    color: blue;
+    text-decoration: ita;
+}
