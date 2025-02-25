@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>accidental mosaic</title>
+    <style>
+        body {
+            background-color: aqua;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-y: hidden;
+            margin: 0px;
+        }
+
+        .pixel {
+            color: rgba(255, 0, 0, 0.964);
+            display: flex;
+            font-size: 10px;
+            justify-content: center;
+            align-items: center;
+            border: black 0.5px solid;
+        }
+
+        a {
+            color: blue;
+        }
+
+        span {
+            font-size: 15px;
+            position: fixed;
+            background-color: aquamarine;
+            bottom: 0px;
+            left: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <span>created Accidentally while making <a href="/Arrays from Pixel Art/index.html">Arrays from Pixel
+            Art</a>.</span>
+    <script>
+
+        const img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.src = "/Arrays from Pixel Art/big.png";
+
+        const colorData = [];
+
+        img.onload = function () {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            const imageData = ctx.getImageData(0, 0, (canvas.width) / 2, (canvas.height) / 1);
+
+            const data = imageData.data;
+
+            const pixelSize = 20 / 1.2;
+            let scanLine = []
+
+            for (let y = 0; y < canvas.height; y += pixelSize) {
+                for (let x = 0; x < canvas.width; x += pixelSize) {
+                    const pixelIndex = (y * canvas.width + x) * 4;
+                    const r = data[pixelIndex];
+                    const g = data[pixelIndex + 1];
+                    const b = data[pixelIndex + 2];
+                    const color = `rgb(${r}, ${g}, ${b})`;
+                    scanLine.push({
+                        x: x,
+                        y: y,
+                        color: color
+                    })
+                }
+                colorData.push(scanLine)
+                scanLine = []
+            }
+            console.log(colorData);
+
+            let size = 25;
+            let displayColorX = false;
+
+            let imageContainer = document.createElement("div");
+            imageContainer.classList.add("imageContainer")
+            document.body.appendChild(imageContainer)
+
+            colorData.forEach((line, lineIndex) => {
+                let lineContainer = document.createElement("div");
+                lineContainer.classList.add("line");
+                line.forEach((color, pixelIndex) => {
+                    let pixel = document.createElement("div");
+                    pixel.style.width = `${size}px`;
+                    pixel.style.height = `${size}px`;
+                    pixel.classList.add("pixel");
+                    pixel.style.backgroundColor = `${color.color}`;
+                    // pixel.innerText = `${Math.round(color.y)}`;
+                    pixel.addEventListener("mouseenter", () => {
+                        pixel.innerText = `${Math.round(color.y)}`;
+                        // pixel.style.border = "none";
+                    });
+                    pixel.addEventListener("mouseleave", () => {
+                        pixel.innerText = "";
+                    });
+                    lineContainer.appendChild(pixel);
+                });
+                lineContainer.style.display = "flex";
+                imageContainer.appendChild(lineContainer);
+            });
+        };
+    </script>
+</body>
+
+</html>

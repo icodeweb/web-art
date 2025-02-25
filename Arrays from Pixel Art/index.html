@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art from Arrays</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <input type="file" id="imageInput" accept="image/*">
+
+    <div class="controls">
+        <label>
+            Scan Pixel Size:
+            <input type="range" id="scanPixelSize" min="1" max="50" value="20">
+            <span id="scanPixelSizeValue">20</span>
+        </label>
+        <label>
+            Draw Pixel Size:
+            <input type="range" id="drawPixelSize" min="1" max="50" value="20">
+            <span id="drawPixelSizeValue">20</span>
+        </label>
+    </div>
+    <div class="imageContainer"></div>
+    <script src="script.js" type="module"></script>
+</body>
+
+</html>

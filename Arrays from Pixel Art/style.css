@@ -1,0 +1,18 @@
+body {
+    background-color: aqua;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pixel {
+    color: rgb(156, 3, 162);
+    font-size: 7px;
+    /* border: black 1px solid; */
+}
+
+.controls {
+    margin-bottom: 20px;
+}
