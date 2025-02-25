@@ -1,23 +1,28 @@
+// let inputsElement = document.querySelector(".inputs");
+// document.getElementById("toggleInputs").addEventListener("click", () => {
+//     inputsElement.classList.toggle("show");
+// });
+
 let img = new Image();
 img.crossOrigin = "Anonymous";
-img.src = "/Arrays from Pixel Art/small.png";
+img.src = "/Arrays from Pixel Art/evidence.jpg";
 
-let scanPixelSize = 20;
-let drawPixelSize = 20;
+let scanPixelSize = 10;
+let drawPixelSize = 10;
 let colorData = [];
 const imageInput = document.getElementById("imageInput");
 const imageContainer = document.querySelector(".imageContainer");
 
-imageInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (file) {
-        img = new Image(); // 
-        img.crossOrigin = "Anonymous";
-        img.src = URL.createObjectURL(file);
-        document.body.appendChild(img)
-        img.onload = analyzeImage;
-    }
-});
+// imageInput.addEventListener("change", (e) => {
+//     const file = e.target.files[0];
+//     if (file) {
+//         img = new Image(); // 
+//         img.crossOrigin = "Anonymous";
+//         img.src = URL.createObjectURL(file);
+//         document.body.appendChild(img)
+//         img.onload = analyzeImage;
+//     }
+// });
 
 // Analyze the image and generate color data
 function analyzeImage() {
@@ -83,22 +88,22 @@ function renderImage() {
 }
 
 // Handle scanPixelSize input changes
-const scanPixelSizeInput = document.getElementById("scanPixelSize");
-const drawPixelSizeInput = document.getElementById("drawPixelSize");
-const scanPixelSizeValue = document.getElementById("scanPixelSizeValue");
-const drawPixelSizeValue = document.getElementById("drawPixelSizeValue");
+// const scanPixelSizeInput = document.getElementById("scanPixelSize");
+// const drawPixelSizeInput = document.getElementById("drawPixelSize");
+// const scanPixelSizeValue = document.getElementById("scanPixelSizeValue");
+// const drawPixelSizeValue = document.getElementById("drawPixelSizeValue");
 
-scanPixelSizeInput.addEventListener("input", (e) => {
-    scanPixelSize = parseInt(e.target.value);
-    scanPixelSizeValue.innerText = scanPixelSize;
-    analyzeImage(); // Re-analyze 
-});
+// scanPixelSizeInput.addEventListener("input", (e) => {
+//     scanPixelSize = parseInt(e.target.value);
+//     scanPixelSizeValue.innerText = scanPixelSize;
+//     analyzeImage(); // Re-analyze 
+// });
 
-drawPixelSizeInput.addEventListener("input", (e) => {
-    drawPixelSize = parseInt(e.target.value);
-    drawPixelSizeValue.innerText = drawPixelSize;
-    renderImage(); // Re-render 
-});
+// drawPixelSizeInput.addEventListener("input", (e) => {
+//     drawPixelSize = parseInt(e.target.value);
+//     drawPixelSizeValue.innerText = drawPixelSize;
+//     renderImage(); // Re-render 
+// });
 
 img.onload = analyzeImage;
 

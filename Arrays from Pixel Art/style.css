@@ -1,18 +1,179 @@
-body {
-    background-color: aqua;
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
     font-family: monospace;
+}
+
+body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 .pixel {
     color: rgb(156, 3, 162);
     font-size: 7px;
-    /* border: black 1px solid; */
+    cursor: crosshair;
 }
 
-.controls {
-    margin-bottom: 20px;
+#toggleInputs {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 3px;
+    font-size: 14px;
+    font-family: monospace;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px black solid;
+}
+
+.workspace {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100vh;
+    width: 100%;
+}
+
+.inputs {
+    padding: 40px 1rem;
+    width: 40%;
+    background-color: rgb(93, 179, 17);
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    border: 1.5px black solid;
+    justify-content: space-between;
+}
+
+label,
+span {
+    /* font-size: 14px; */
+    font-family: monospace;
+    font-weight: 600;
+}
+
+.textLine {
+    display: flex;
+    /* gap: 30px; */
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 220px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    background: #ddd;
+    border: 1.5px black solid;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 10px;
+    background: rgb(23, 118, 4);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: rgb(35, 181, 6);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+    background: rgb(14, 69, 3);
+    transform: scale(1.2);
+}
+
+.show {
+    display: block;
+}
+
+.custom-checkbox {
+    display: flex;
+    gap: 20px;
+    padding: 10px 0px;
+}
+
+/* Hide the native checkbox */
+.custom-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkmark */
+.custom-checkbox .checkmark {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    margin-right: 8px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* When the checkbox is hovered, add a subtle change */
+.custom-checkbox:hover .checkmark {
+    background-color: rgb(202, 202, 202);
+}
+
+/* When the checkbox is checked, change the background */
+.custom-checkbox input[type="checkbox"]:checked+.checkmark {
+    background-color: #177604;
+    border-color: rgb(23, 118, 4);
+}
+
+/* Create the tick (using pseudo-element) */
+.custom-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Display the tick when checked */
+.custom-checkbox input[type="checkbox"]:checked+.checkmark:after {
+    display: block;
+}
+
+/* Style the tick */
+.custom-checkbox .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid rgb(255, 255, 255);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.customInputLabel {
+    padding: 12px 20px;
+    background-color: #1b8a05;
+    color: white;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.customInputLabel:hover {
+    background-color: #21a407;
+}
+
+.customInputLabel:active {
+    background-color: #2cc60d;
 }

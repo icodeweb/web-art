@@ -5,25 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Art from Arrays</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+
+    </style>
 </head>
 
 <body>
-    <input type="file" id="imageInput" accept="image/*">
+    <div class="workspace">
+        <!-- <button id="toggleInputs">Parameters</button>
 
-    <div class="controls">
-        <label>
-            Scan Pixel Size:
-            <input type="range" id="scanPixelSize" min="1" max="50" value="20">
-            <span id="scanPixelSizeValue">20</span>
-        </label>
-        <label>
-            Draw Pixel Size:
-            <input type="range" id="drawPixelSize" min="1" max="50" value="20">
-            <span id="drawPixelSizeValue">20</span>
-        </label>
+        <div class="inputs">
+            <div class="input">
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <label for="imageInput" class="customInputLabel">
+                    <span>select an image</span>
+                </label>
+            </div>
+
+            <div class="input">
+                <div class="textLine">
+                    <label for="scanPixelSize">Scan Pixel Size:</label>
+                    <span id="scanPixelSizeValue">20</span>
+                </div>
+                <input type="range" id="scanPixelSize" min="1" max="50" value="20">
+            </div>
+
+            <div class="input">
+                <div class="textLine">
+                    <label for="drawPixelSize">Draw Pixel Size:</label>
+                    <span id="drawPixelSizeValue">20</span>
+                </div>
+                <input type="range" id="drawPixelSize" min="1" max="50" value="20">
+            </div>
+        </div> -->
+        <div class="imageContainer"></div>
     </div>
-    <div class="imageContainer"></div>
     <script src="script.js" type="module"></script>
 </body>
 
