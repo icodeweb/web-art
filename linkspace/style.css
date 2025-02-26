@@ -1,0 +1,26 @@
+:root {
+    --linkWidth: 88px;
+    --linkHeight: 31px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    /* width: calc(var(--linkWidth)*16); */
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    gap: 2px;
+}
+
+a,
+a img {
+    width: var(--linkWidth);
+    height: var(--linkHeight);
+}
