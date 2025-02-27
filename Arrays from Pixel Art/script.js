@@ -33,6 +33,7 @@ function analyzeImage() {
     ctx.drawImage(img, 0, 0);
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
+    console.log(data);
 
     colorData = [];
     let scanLine = [];
@@ -85,6 +86,8 @@ function renderImage() {
 
         imageContainer.appendChild(lineElement);
     });
+    let pixels = document.querySelectorAll(".pixel")
+    console.log(pixels.length);
 }
 
 // Handle scanPixelSize input changes
@@ -104,6 +107,7 @@ function renderImage() {
 //     drawPixelSizeValue.innerText = drawPixelSize;
 //     renderImage(); // Re-render 
 // });
+
 
 img.onload = analyzeImage;
 
