@@ -131,14 +131,20 @@ p {
     display: none;
 }
 
-.counter {
+.wedigts {
     position: absolute;
     left: 1%;
     bottom: 1%;
 }
 
-.counter img {
+.wedigts a img {
     outline: rgb(0, 0, 255) solid 1px;
     padding: 10px;
 
+}
+
+#app {
+    position: absolute;
+    left: 10%;
+    top: 50%;
 }

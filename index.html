@@ -11,11 +11,20 @@
 
 <body>
     <div class="leftSide">
+        <div class="wedigts">
+
+            <a href="https://www.imood.com/users/ibrahim98"><img
+                    src="https://moods.imood.com/display/uname-ibrahim98/imood.gif"
+                    alt="The current mood of ibrahim98 at www.imood.com" border="0"></a>
+
+            <a href="https://www.hitwebcounter.com" target="_blank">
+                <img src="https://hitwebcounter.com/counter/counter.php?page=19347187&style=0007&nbdigits=3&type=page&initCount=0"
+                    title="Counter Widget" Alt="Visit counter For Websites" border="0" /></a>
+
+        </div>
         <span id="title">
         </span>
-        <a href="https://www.hitwebcounter.com" target="_blank" class="counter">
-            <img src="https://hitwebcounter.com/counter/counter.php?page=19347187&style=0007&nbdigits=3&type=page&initCount=0"
-                title="Counter Widget" Alt="Visit counter For Websites" border="0" /></a>
+
         <img id="gif" src="assets/tornado.gif">
         <p>this is my web backyard, collection of my experiments, small creative dirty projects, interactive visuals,
             and unique designs .
@@ -50,15 +59,23 @@
         <li><a href="ColorThief/index.html">trying out color-thief</a></li>
         <li><a href="accidental mosaic/index.html"><small>accidental</small> mosaic</a></li>
         <li><a href="linkspace/index.html">linkspace</a></li>
+        <li><a href="X3DOM/HelloX3DOM.html">HelloX3DOM</a></li>
     </ul>
     <div class="bottomLine">
         <small>created by</small> <br>
         <a id="myLink" href="https://github.com/icodeweb" target="_blank" rel="noopener noreferrer">Ibrahim
             Ismail</a>
     </div>
+    <div id="app"></div>
+    <script src="https://unpkg.com/webamp"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script>
+        const app = document.getElementById("app")
+        const webamp = new Webamp();
+        // webamp.renderWhenReady(app);
+        console.log(webamp);
+
         let typed = new Typed('#title', {
             strings: ['Web is the coolest canvas ever.',],
             typeSpeed: 50,
