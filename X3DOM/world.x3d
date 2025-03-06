@@ -3,15 +3,14 @@
 <X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
     <!-- The scene is like the HTML body tag, it defines the visual content -->
     <Scene>
-        
         <!--     World Meta Data, Background colour is in Generic Decimal colour format     -->
         <WorldInfo title='Demo Land' />
 		<Background skyColor='0.000, 0.662, 0.949' />
-        
+
         <!--     The players view position     -->
-        <Viewpoint position="43.13747 9.08974 -68.82131" orientation="0.06506 0.99585 0.06369 2.39221" centerOfRotation="0.00000 0.00000 0.00000" fieldOfView="0.78540" description=""></Viewpoint>
+        <Viewpoint position="43.13747 9.08974 -68.82131" orientation="0.06506 0.99585 0.06369 2.39221" centerOfRotation="0.00000 0.00000 0.00000" fieldOfView="1" description=""></Viewpoint>
         <!--     How the player moves within the world, there are a number of options     -->
-	    <navigationInfo type='walk' headlight='false' speed='5' avatarSize='75' transitionType="TELEPORT" ></navigationInfo>
+	    <navigationInfo type='examin' headlight='false' speed='8' avatarSize='75' transitionType="TELEPORT" ></navigationInfo>
 		<!-- type: 	{"ANY","WALK","EXAMINE","FLY","LOOKAT","NONE","EXPLORE",...}	 -->
 		<!-- transitionType:  [LINEAR, TELEPORT, ANIMATE, ...]	 -->
         
@@ -19,20 +18,28 @@
         <!--     Transform tags are like divs, they allow us to position and manipulate everything within them     -->
         <Transform DEF='WORLD' translation='0 0 0' >
             <!--     This is an example of loading a model from a separate file     -->
-            <transform translation='7 -2 0' scale="2.5 2.5 2.5" >
-                <inline url='Deer.x3d' nameSpaceName="Deer" onclick='change()' mapDEFToID="true" />
+            <!-- Deer -->
+            <transform 
+                    translation='7 -2 0' scale="2.5 2.5 2.5" >
+                <inline 
+                    url='Deer.x3d' onclick='change("deer")' 
+                    nameSpaceName="Deer"  mapDEFToID="true" DEF="deer"/>
             </transform>
-
-                <transform translation='10 -2 0' scale="1 1 1">
-                <inline url='bird.x3d' nameSpaceName="bird" onclick='change()' mapDEFToID="true" DEF="birds"/>
+            <!-- birds -->
+                <transform 
+                    translation='10 -2 0' scale="1 1 1">
+                <inline 
+                    url='bird.x3d' onclick='change("birds")' 
+                    nameSpaceName="bird"  mapDEFToID="true" DEF="birds"/>
+                </transform>
+            <!-- monkey -->
+                <transform 
+                    translation='-5.5 -2.5 10' scale="1 1 1">
+                <inline 
+                    url='assets/monkey.x3d' onclick='change("monkey")' id="ininin"
+                    nameSpaceName="monkey"  mapDEFToID="true" DEF="monkey"/>
                 </transform>
 
-               <transform translation='-5.5 -2.5 10' scale="1 1 1" DEF="monkey">
-                <inline url='assets/monkey.x3d' />
-            </transform>
-
-
-            
             <!--     This is an example of a generic object and an image being rendered onto it     -->
             <Transform translation='0 -10 0' DEF='water'>
                 <Shape>

@@ -31,7 +31,7 @@
         #melon {
             position: absolute;
             bottom: 20px;
-            left: 10px;
+            right: 10px;
             z-index: 1000;
         }
     </style>
@@ -41,16 +41,12 @@
 
     <a id="melon" target="_blank" href="https://melonking.net"><img alt="Visit Melonking.Net!"
             src="https://melonking.net/images/badges/MELON-BADGE-2.GIF" style="image-rendering: pixelated"></a>
+
     <x3d disableDoubleClick="false">
         <scene>
-            <transform translation='0 0 0'>
-                <inline url='demo.x3d' />
-            </transform>
-
+            <inline url='world.x3d' />
         </scene>
-
     </x3d>
-    <!-- load="false" -->
 
     <div id="messages"></div>
 
@@ -60,8 +56,11 @@
         // Deer__MA_Nose
         // MA_Material
 
-        function change() {
-            let inlineElemnt = document.getElementById("deerInline")
+        function change(DEF) {
+            // DEF is the actual inline DEF attribute 
+            console.log(DEF);
+
+            let inlineElemnt = document.getElementById("ininin")
             let spaceName = inlineElemnt.getAttribute("nameSpaceName")
             // spaceName = ""
             let targetedDef = "MA_Eye"
