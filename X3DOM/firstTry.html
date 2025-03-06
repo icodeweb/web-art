@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first try x3dom</title>
+    <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script>
+    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'>
+    </link>
+</head>
+
+<body>
+    <x3d width="100%" height="100%" showStat="true" PrimitiveQuality="1" showlog="false">
+        <scene>
+
+            <shape onclick="change();">
+                <appearance>
+                    <MovieTexture url='eyes.mp4' loop="true" speed='1' repeatS="true" repeatT="true">
+                        <MovieTexture />
+                </appearance>
+                <box></box>
+            </shape>
+            <transform translation='-3 0 0'>
+                <shape>
+                    <appearance>
+                        <ImageTexture url="radar.jpg">
+                            <ImageTexture />
+                    </appearance>
+                    <cone></cone>
+                </shape>
+            </transform>
+            <transform translation='3 0 0'>
+                <shape>
+                    <appearance>
+                        <material diffuseColor='0 0 1'></material>
+                    </appearance>
+                    <sphere></sphere>
+                </shape>
+
+                <shape>
+                    <appearance>
+                        <material diffuseColor='1 0 0'></material>
+                    </appearance>
+                    <Torus></Torus>
+                </shape>
+
+            </transform>
+            <AudioClip url="sound.wav" loop='true' enabled='false' id="sound" />
+        </scene>
+    </x3d>
+    <x3d disableDoubleClick="false">
+        <scene>
+            <transform translation='0 0 0'>
+                <inline id="blobInline" url="blob.x3d" nameSpaceName="blob" mapDEFToID="true" onclick='change();'>
+                </inline>
+            </transform>
+            <AudioClip url="sound.wav" loop='true' enabled='false' id="sound" />
+        </scene>
+
+    </x3d>
+    <script>
+        function change() {
+            let inlineElemnt = document.getElementById("deerInline")
+            let spaceName = inlineElemnt.getAttribute("nameSpaceName")
+            let targetedDef = "MA_Eye"
+            // spaceName = ""
+            let target = `${spaceName}__${targetedDef}`
+
+            console.log(target);
+
+            if (document.getElementById(target).getAttribute('diffuseColor') != '1 0 0')
+                document.getElementById(target).setAttribute('diffuseColor', '1 0 0');
+            else
+                document.getElementById(target).setAttribute('diffuseColor', '0 0 0');
+
+            if (document.getElementById("sound").getAttribute('enabled') == "false")
+                document.getElementById("sound").setAttribute('enabled', 'true');
+            else
+                document.getElementById("sound").setAttribute('enabled', 'false');
+        };
+    </script>
+</body>
+
+</html>

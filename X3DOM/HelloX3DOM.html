@@ -6,7 +6,6 @@
     <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'>
     </link>
     <style>
-        /* Main Body and X3D styling, we make it fill the entire browser window */
         body,
         html,
         x3d {
@@ -15,11 +14,10 @@
             padding: 0px;
             width: 100%;
             height: 100%;
-            /* overflow: hidden; */
+            overflow: hidden;
             background-color: aqua;
         }
 
-        /* This is styling for a console style text area */
         #messages {
             float: left;
             position: absolute;
@@ -40,55 +38,7 @@
 </head>
 
 <body>
-    <!-- <x3d width="100%" height="100%" showStat="true" PrimitiveQuality="1" showlog="false">
-        <scene>
 
-            <shape onclick="change();">
-                <appearance>
-                    <MovieTexture url='eyes.mp4' loop="true" speed='1' repeatS="true" repeatT="true">
-                        <MovieTexture />
-                </appearance>
-                <box></box>
-            </shape>
-            <transform translation='-3 0 0'>
-                <shape>
-                    <appearance>
-                        <ImageTexture url="radar.jpg">
-                            <ImageTexture />
-                    </appearance>
-                    <cone></cone>
-                </shape>
-            </transform>
-            <transform translation='3 0 0'>
-                <shape>
-                    <appearance>
-                        <material diffuseColor='0 0 1'></material>
-                    </appearance>
-                    <sphere></sphere>
-                </shape>
-
-                <shape>
-                    <appearance>
-                        <material diffuseColor='1 0 0'></material>
-                    </appearance>
-                    <Torus></Torus>
-                </shape>
-
-            </transform>
-            <AudioClip url="sound.wav" loop='true' enabled='false' id="sound" />
-        </scene>
-    </x3d>
-    <x3d disableDoubleClick="false">
-        <scene>
-            <transform translation='0 0 0'>
-                <inline id="blobInline" url="blob.x3d" nameSpaceName="blob" mapDEFToID="true" onclick='change();'>
-                </inline>
-            </transform>
-            <AudioClip url="sound.wav" loop='true' enabled='false' id="sound" />
-        </scene>
-
-    </x3d> -->
-    <div id="messages"></div>
     <a id="melon" target="_blank" href="https://melonking.net"><img alt="Visit Melonking.Net!"
             src="https://melonking.net/images/badges/MELON-BADGE-2.GIF" style="image-rendering: pixelated"></a>
     <x3d disableDoubleClick="false">
@@ -100,19 +50,21 @@
         </scene>
 
     </x3d>
-    <!-- This is a console style message system and an example of javascript you can call from X3D -->
+    <!-- load="false" -->
+
+    <div id="messages"></div>
 
     <script>
 
         // Deer__MA_Eye
+        // Deer__MA_Nose
         // MA_Material
-        // MA_Pelt
 
         function change() {
             let inlineElemnt = document.getElementById("deerInline")
             let spaceName = inlineElemnt.getAttribute("nameSpaceName")
-            let targetedDef = "MA_Eye"
             // spaceName = ""
+            let targetedDef = "MA_Eye"
             let target = `${spaceName}__${targetedDef}`
 
             console.log(target);
@@ -128,24 +80,13 @@
                 document.getElementById("sound").setAttribute('enabled', 'false');
         };
 
-
-
         let textbox = document.getElementById('messages');
         let textStream = "";
         function txtDisplay(message) {
             textStream = message + '<br/>' + textStream;
             textbox.innerHTML = textStream;
         }
-
-
-        // var myColorArray = document.getElementById('myColorNode').requestFieldRef('color');
-        // myColorArray[23].r = 1.0;    //the myColorArray object is of type 'MFColor', and it is the same object that is internally used by X3DOM
-        // document.getElementById('myColorNode').releaseFieldRed('color');
-
     </script>
-
-
-
 </body>
 
 </html>
