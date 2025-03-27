@@ -55,29 +55,37 @@
         // Deer__MA_Eye
         // Deer__MA_Nose
         // MA_Material
-
-        function change(DEF) {
-            // DEF is the actual inline DEF attribute 
-            console.log(DEF);
-
-            let inlineElemnt = document.getElementById("ininin")
+        function change() {
+            let inlineElemnt = document.getElementById("deerInline")
             let spaceName = inlineElemnt.getAttribute("nameSpaceName")
             // spaceName = ""
             let targetedDef = "MA_Eye"
             let target = `${spaceName}__${targetedDef}`
 
             console.log(target);
+        }
+        // function change(DEF) {
+        //     // DEF is the actual inline DEF attribute 
+        //     console.log(DEF);
 
-            if (document.getElementById(target).getAttribute('diffuseColor') != '1 0 0')
-                document.getElementById(target).setAttribute('diffuseColor', '1 0 0');
-            else
-                document.getElementById(target).setAttribute('diffuseColor', '0 0 0');
+        //     let inlineElemnt = document.getElementById("ininin")
+        //     let spaceName = inlineElemnt.getAttribute("nameSpaceName")
+        //     // spaceName = ""
+        //     let targetedDef = "MA_Eye"
+        //     let target = `${spaceName}__${targetedDef}`
 
-            if (document.getElementById("sound").getAttribute('enabled') == "false")
-                document.getElementById("sound").setAttribute('enabled', 'true');
-            else
-                document.getElementById("sound").setAttribute('enabled', 'false');
-        };
+        //     console.log(target);
+
+        //     if (document.getElementById(target).getAttribute('diffuseColor') != '1 0 0')
+        //         document.getElementById(target).setAttribute('diffuseColor', '1 0 0');
+        //     else
+        //         document.getElementById(target).setAttribute('diffuseColor', '0 0 0');
+
+        //     if (document.getElementById("sound").getAttribute('enabled') == "false")
+        //         document.getElementById("sound").setAttribute('enabled', 'true');
+        //     else
+        //         document.getElementById("sound").setAttribute('enabled', 'false');
+        // };
 
         let textbox = document.getElementById('messages');
         let textStream = "";

@@ -10,7 +10,7 @@
         <!--     The players view position     -->
         <Viewpoint position="43.13747 9.08974 -68.82131" orientation="0.06506 0.99585 0.06369 2.39221" centerOfRotation="0.00000 0.00000 0.00000" fieldOfView="1" description=""></Viewpoint>
         <!--     How the player moves within the world, there are a number of options     -->
-	    <navigationInfo type='examin' headlight='false' speed='8' avatarSize='75' transitionType="TELEPORT" ></navigationInfo>
+	    <navigationInfo type='examin' headlight='true' speed='8' avatarSize='75' transitionType="TELEPORT" ></navigationInfo>
 		<!-- type: 	{"ANY","WALK","EXAMINE","FLY","LOOKAT","NONE","EXPLORE",...}	 -->
 		<!-- transitionType:  [LINEAR, TELEPORT, ANIMATE, ...]	 -->
         
@@ -23,7 +23,7 @@
                     translation='7 -2 0' scale="2.5 2.5 2.5" >
                 <inline 
                     url='Deer.x3d' onclick='change("deer")' 
-                    nameSpaceName="Deer"  mapDEFToID="true" DEF="deer"/>
+                    nameSpaceName="Deer"  mapDEFToID="true" DEF="deer" id="deerInline"/>
             </transform>
             <!-- birds -->
                 <transform 
@@ -57,11 +57,35 @@
                 </Shape>
             </Transform>
 
-            <Transform translation='0 -25 0' scale="1 1 1" DEF='hill'>
-                <!-- How to load other X3D files -->                
+            <!-- <Transform translation='0 -25 0' scale="1 1 1" DEF='hill'>
+             
                 <inline url='assets/hill.x3d' /> 
+            </Transform> -->
+            <!-- <Transform translation='0 20 0' scale="30 30 30" > -->
+            <Transform translation='0 0 0' scale="20 20 20" >
+                <!-- How to load other X3D files -->                
+                <inline url='avani.x3d' /> 
+                
             </Transform>
 
+            <Transform translation='20 2 0' scale="1 1 1" DEF='green' >               
+                <inline url='greenthing.x3d' /> 
+            </Transform>
+  
+        
+        <Transform translation='20 30 0' scale="1 1 1" DEF='sdd' >               
+                <inline url='assets/draft.x3d' /> 
+            </Transform>
+
+        </Transform>
+                    <Transform translation='10 10 0' rotation='0 1 0 3.14159'>
+                <Shape>
+                    <Box size='10 10 0.5' />
+                    <Appearance>
+                    <VideoTexture url="eyes.mp4" loop="true" autoplay="true" />
+                    <TextureTransform scale="1 1" />
+                    </Appearance>
+                </Shape>
         </Transform>
 
         <!-- An example of how to add sound! -->                

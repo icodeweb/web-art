@@ -1,3 +1,7 @@
+.pixel {
+    cursor: crosshair;
+}
+
 * {
     margin: 0px;
     padding: 0px;
@@ -12,13 +16,42 @@ body {
     justify-content: center;
 }
 
-.pixel {
-    color: rgb(156, 3, 162);
-    font-size: 7px;
-    cursor: crosshair;
-}
+
 
 .workspace {
     width: fit-content;
     height: auto;
 }
+
+.imageContainer {
+    display: flex;
+    flex-direction: column;
+    /* background-color: black; */
+}
+
+.line {
+    display: flex;
+}
+
+
+.columnReverse {
+    flex-direction: column-reverse !important;
+}
+
+.rowReverse {
+    flex-direction: row-reverse !important;
+}
+
+/* imageContainer column-reverse
+imageContainer,line gap
+pixel rotate  border-radius
+
+filter: grayscale(1);
+filter: brightness();
+filter: contrast();
+filter: hue-rotate(100deg);
+filter: invert(1);
+filter: none;
+filter: opacity(.1);
+filter: saturate();
+filter: sepia(.1); */

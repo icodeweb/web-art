@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mondrian</title>
+    <style>
+        td {
+            width: 20px;
+            height: 20px;
+        }
+
+        body {
+            background-image: url("lifebg.gif");
+            background-repeat: repeat;
+        }
+    </style>
+</head>
+<table>
+    <tr>
+        <td colspan="2" rowspan="2">w</td>
+        <td colspan="3" rowspan="2">w</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+<body>
+
+    <!--
+    8 col
+    15 row
+    -->
+
+
+
+
+
+
+    <script>
+        document.querySelectorAll("td").forEach(td => {
+            if (td.innerText === "w") {
+                td.style.backgroundColor = "white"
+            } else if (td.innerText === "y") {
+                td.style.backgroundColor = "yellow"
+            } else if (td.innerText === "r") {
+                td.style.backgroundColor = "red"
+            } else if (td.innerText === "b") {
+                td.style.backgroundColor = "black"
+            } else {
+                td.style.backgroundColor = "blue"
+            }
+        })
+    </script>
+</body>
+
+</html>
+
+
+<!-- <table>
+        <tr>
+            <td rowspan="4" colspan="2">w</td>
+            <td rowspan="4" colspan="3">w</td>
+            <td colspan="2" rowspan="4">y</td>
+            <td rowspan="4" colspan="2">w</td>
+        </tr>
+        <tr>
+
+        </tr>
+
+        <tr>
+
+
+    <td>w</td>
+    </tr>
+    <tr>
+
+        <td>y</td>
+    </tr>
+    <tr>
+        <td rowspan="2">w</td>
+        <td colspan="4" rowspan="4">r</td>
+
+        <td colspan="2" rowspan="2">y</td>
+        <td>y</td>
+        <td rowspan="5">w</td>
+    </tr>
+    <tr>
+
+
+        <td>y</td>
+        <td>y</td>
+
+    </tr>
+
+    <tr>
+        <td rowspan="3">w</td>
+        <td rowspan="2">w</td>
+        <td>w</td>
+    </tr>
+    <tr>
+
+        <td>w</td>
+    </tr>
+
+    <tr>
+
+        <td colspan="2" rowspan="2">b</td>
+
+        <td>w</td>
+        <td>w</td>
+        <td>w</td>
+        <td>w</td>
+    </tr>
+
+    <tr>
+        <td rowspan="5">y</td>
+        <td>w</td>
+        <td colspan="2">w</td>
+        <td>w</td>
+        <td rowspan="2" colspan="2">blue</td>
+        <td rowspan="5">r</td>
+    </tr>
+    <tr>
+        <td rowspan="4" colspan="3">w</td>
+
+        <td colspan="2">b</td>
+        <td>b</td>
+    </tr>
+    <tr>
+
+        <td rowspan="3" colspan="4">w</td>
+        <td>w</td>
+    </tr>
+    <tr>
+        <td>w</td>
+    </tr>
+    <tr>
+        <td>w</td>
+    </tr>
+</table>   -->
