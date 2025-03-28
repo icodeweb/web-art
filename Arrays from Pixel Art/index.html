@@ -4,121 +4,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Art from Arrays</title>
+    <title>DivRuptor</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        #cordinates {
-            position: fixed;
-            color: white;
-            background-color: red;
-            display: none;
-            padding: 3px 3px;
-            z-index: 10000;
-        }
-
-        /* .show {
-            visibility: hidden;
-        }
-
-        .inputs {
-            visibility: visible;
-        } */
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 </head>
 
 <body>
     <div class="workspace">
-        <div id="cordinates">
-            <p>x: <span id="x"></span></p>
-            <p>y: <span id="y"></span></p>
-        </div>
-        <button id="toggleInputs">Parameters</button>
-        <div class="inputs">
-            <div class="input">
-                <input type="file" id="imageInput" accept="image/*" hidden>
-                <label for="imageInput" class="customInputLabel">
-                    <span>select an image</span>
-                </label>
+        <div class="control">
+            <div id="cordinates">
+                <p>x: <span id="x"></span></p>
+                <p>y: <span id="y"></span></p>
             </div>
-
-            <table>
-                <tr>
-                    <td>
-                        <label for="scanPixelSize">Scan Size:</label>
-                    </td>
-                    <td>
-                        <input type="range" id="scanPixelSize" min="1" max="50" value="25">
-                    </td>
-                    <td>
+            <button id="toggleInputs">Parameters</button>
+            <div class="inputs">
+                <div class="input">
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                    <label for="imageInput" class="customInputLabel">
+                        <span>load an image</span>
+                    </label>
+                </div>
+                <div class="input">
+                    <div>
+                        <label for="scanPixelSize">Scan Size</label>
                         <span id="scanPixelSizeValue"></span>
-                    </td>
-                </tr>
-            </table>
-            <div class="input">
-                <div class="textLine">
+                    </div>
+                    <input type="range" id="scanPixelSize" min="1" max="50" value="25">
                 </div>
-            </div>
-            <div class="input">
-                <div class="textLine">
-                    <label for="drawPixelSize">Draw Size:</label>
+                <div class="input">
+                    <div>
+                        <label for="drawPixelSize">Draw Size</label>
+                        <span id="drawPixelSizeValue"></span>
+                    </div>
                     <input type="range" id="drawPixelSize" min="1" max="50" value="25">
-                    <span id="drawPixelSizeValue"></span>
                 </div>
-            </div>
-            <div class="input">
-                <div class="textLine">
-                    <label for="pixelRotate">pixel rotate:</label>
+                <div class="input">
+                    <div>
+                        <label for="pixelRotate">pixel rotate</label>
+                        <span id="pixelRotateValue">0deg</span>
+                    </div>
                     <input type="range" id="pixelRotate" min="0" max="90" value="0">
-                    <span id="pixelRotateValue">0deg</span>
                 </div>
-            </div>
-            <div class="input">
-                <div class="textLine">
-                    <label for="pixelRadius">pixel radius:</label>
+                <div class="input">
+                    <div>
+                        <label for="pixelRadius">pixel radius</label>
+                        <span id="pixelRadiusValue">0%</span>
+                    </div>
                     <input type="range" id="pixelRadius" min="0" max="50" value="0">
-                    <span id="pixelRadiusValue">0%</span>
                 </div>
-            </div>
-            <div class="input">
-                <div class="textLine">
-                    <label for="lineGap">row gap:</label>
+                <div class="input">
+                    <div>
+                        <label for="lineGap">row gap</label>
+                        <span id="lineGapValue">0px</span>
+                    </div>
                     <input type="range" id="lineGap" min="0" max="10" value="0" step="0.1">
-                    <span id="lineGapValue">0px</span>
                 </div>
-            </div>
-            <div class="input">
-                <div class="textLine">
-                    <label for="columnGap">column gap:</label>
+                <div class="input">
+                    <div>
+                        <label for="columnGap">column gap</label>
+                        <span id="columnGapValue">0px</span>
+                    </div>
                     <input type="range" id="columnGap" min="0" max="10" value="0" step="0.1">
-                    <span id="columnGapValue">0px</span>
                 </div>
-            </div>
-            <div class="input">
-                <div class="textLine">
-                    <label for="columnReverse">vertical reverse</label>
-                    <input type="checkbox" id="columnReverse">
+                <div class="input">
+                    <div>
+                        <label for="grayscale">gray scale</label>
+                        <span id="grayscaleValue">0.0</span>
+                    </div>
+                    <input type="range" class="filterInput" id="grayscale" min="0" max="1" value="0" step="0.1">
                 </div>
-            </div>
-            <div class="input">
-                <div class="textLine">
-                    <label for="rowReverse">horizontal reverse</label>
-                    <input type="checkbox" id="rowReverse">
+                <div class="input">
+                    <div>
+                        <label for="brightness">brightness</label>
+                        <span id="brightnessValue">1.0</span>
+                    </div>
+                    <input type="range" class="filterInput" id="brightness" min="0" max="10" value="1" step="0.1">
                 </div>
+                <div class="input">
+                    <div>
+                        <div>
+                            <label for="contrast">contrast</label>
+                            <span id="contrastValue">1.0</span>
+                        </div>
+                    </div>
+                    <input type="range" class="filterInput" id="contrast" min="0" max="50" value="1" step="0.1">
+                </div>
+                <div class="input">
+                    <div>
+                        <label for="hueRotate">hue Rotate</label>
+                        <span id="hueRotateValue">0deg</span>
+                    </div>
+                    <input type="range" class="filterInput" id="hueRotate" min="0" max="360" value="0" step="1">
+                </div>
+                <div class="input">
+                    <div>
+                        <label for="invert">invert</label>
+                        <span id="invertValue">0.0</span>
+                    </div>
+                    <input type="range" class="filterInput" id="invert" min="0" max="1" value="0" step="0.1">
+                </div>
+                <div class="input">
+                    <div>
+                        <label for="opacity">opacity</label>
+                        <span id="opacityValue">1.0</span>
+                    </div>
+                    <input type="range" class="filterInput" id="opacity" min="0" max="1" value="1" step="0.1">
+                </div>
+                <div class="input">
+                    <div>
+                        <label for="saturate">saturate</label>
+                        <span id="saturateValue">1.0</span>
+                    </div>
+                    <input type="range" class="filterInput" id="saturate" min="0" max="100" value="1" step="0.5">
+                </div>
+                <div class="input">
+                    <div>
+                        <label for="sepia">sepia</label>
+                        <span id="sepiaValue">0.0</span>
+                    </div>
+                    <input type="range" class="filterInput" id="sepia" min="0" max="1" value="0" step="0.1">
+                </div>
+                <div class="input">
+                    <div>
+                        <label for="columnReverse">vertical reverse</label>
+                        <input type="checkbox" id="columnReverse">
+                    </div>
+                </div>
+                <div class="input">
+                    <div>
+                        <label for="rowReverse">horizontal reverse</label>
+                        <input type="checkbox" id="rowReverse">
+                    </div>
+                </div>
+                <button id="toggleRandomFilter">RandomFilter</button>
+                <button id="saveImage">save image</button>
+                <div id="pixelCount"></div>
             </div>
-            <div id="pixelCount"></div>
         </div>
-        <div class="imageContainer"></div>
+        <div class="imageContainer" id="test" id="imageContainer"></div>
     </div>
+    <p id="credits"
+        style="width: fit-content; padding: 10px; position: fixed; bottom:0%; left: 0%; font-size: 20px; background-color: blue; color: white;">
+        credit to
+        <a href="https://github.com/tsayen/dom-to-image">dom-to-image</a>,
+        <a href="https://github.com/eligrey/FileSaver.js">FileSaver</a>,
+        <a href="https://sweatequitynyc.bandcamp.com/album/evidence">deli girls</a>
+    </p>
     <script src="script.js" type="module"></script>
 </body>
-<!-- /* 
-filter: grayscale(1);
-filter: brightness();
-filter: contrast();
-filter: hue-rotate(100deg);
-filter: invert(1);
-filter: opacity(.1);
-filter: saturate();
-filter: sepia(.1); */ -->
 
 </html>
