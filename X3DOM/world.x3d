@@ -57,10 +57,10 @@
                 </Shape>
             </Transform>
 
-            <!-- <Transform translation='0 -25 0' scale="1 1 1" DEF='hill'>
+            <Transform translation='0 -25 0' scale="1 1 1" DEF='hill'>
              
                 <inline url='assets/hill.x3d' /> 
-            </Transform> -->
+            </Transform>
             <!-- <Transform translation='0 20 0' scale="30 30 30" > -->
             <Transform translation='0 0 0' scale="20 20 20" >
                 <!-- How to load other X3D files -->                
@@ -78,15 +78,7 @@
             </Transform>
 
         </Transform>
-                    <Transform translation='10 10 0' rotation='0 1 0 3.14159'>
-                <Shape>
-                    <Box size='10 10 0.5' />
-                    <Appearance>
-                    <VideoTexture url="eyes.mp4" loop="true" autoplay="true" />
-                    <TextureTransform scale="1 1" />
-                    </Appearance>
-                </Shape>
-        </Transform>
+
 
         <!-- An example of how to add sound! -->                
         <Sound>

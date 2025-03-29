@@ -106,17 +106,9 @@ li {
 
     ul {
         z-index: 100;
-        margin-top: 200px;
+        margin-top: 100px;
     }
 
-    x3d {
-        overflow: hidden;
-        z-index: 0;
-        width: 100vw !important;
-        height: 250px !important;
-        left: 0px;
-        position: absolute;
-    }
 
     #gif {
         width: 100vw;
@@ -129,14 +121,17 @@ li {
     p {
         display: none;
     }
+
+
+
 }
 
 p {
     position: absolute;
     font-size: 10px;
     width: 500px;
-    left: 100px;
-    top: 580px;
+    right: 100px;
+    top: 50%;
     outline: rgb(0, 0, 255) solid 1px;
     padding: 10px 20px;
     display: none;
@@ -166,4 +161,10 @@ x3d {
     height: 100%;
     overflow: hidden;
     z-index: 0;
+}
+
+#winamp {
+    position: absolute;
+    top: 70%;
+    left: 80%;
 }

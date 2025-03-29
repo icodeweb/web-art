@@ -5,82 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>web-art</title>
-    <!-- <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> -->
-    <!-- <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'>
-    </link> -->
-    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'>
-    </link>
     <link rel="stylesheet" href="style.css">
-
+    <style>
+        iframe {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+        }
+    </style>
 </head>
 
 <body>
+    <iframe src="assets/3D TorusKnot for index.html" frameborder="0" width="100%"></iframe>
     <div class="leftSide">
         <div class="wedigts">
-
             <a href="https://www.imood.com/users/ibrahim98"><img
                     src="https://moods.imood.com/display/uname-ibrahim98/imood.gif"
                     alt="The current mood of ibrahim98 at www.imood.com" border="0"></a>
-            <!-- <a href="https://www.hitwebcounter.com" target="_blank">
+            <a href="https://www.hitwebcounter.com" target="_blank">
                 <img src="https://hitwebcounter.com/counter/counter.php?page=19347187&style=0007&nbdigits=3&type=page&initCount=0"
-                    title="Counter Widget" Alt="Visit counter For Websites" border="0" /></a> -->
-
+                    title="Counter Widget" Alt="Visit counter For Websites" border="0" /></a>
         </div>
-        <span id="title">
-        </span>
-
-        <img id="gif" src="assets/tornado.gif">
-        <!-- <x3d disableDoubleClick="false">
-            <scene>
-                <transform translation='0 0 0'>
-                    <inline url='/X3DOM/world.x3d' />
-                </transform>
-            </scene>
-        </x3d> -->
-        <p>this is my web backyard, collection of my experiments, small creative dirty projects, interactive visuals,
-            and unique designs .
-            I aim to create something daily, even if it’s just a tiny idea.
-            using
-            HTML + CSS for structure and styling
-            JavaScript for interactivity
-            with Other tools I might explore (WebGL, Three.js, p5.js, etc.)
+        <span id="title"></span>
+        <p>this is a corner of my web backyard, collection of my experiments, small creative dirty projects,
+            interactive visuals,and unique designs .
             <br><strong>web is art form.</strong> <small>even if my projects are trash</small>
         </p>
     </div>
 
     <ul>
         <li><a href="3D Rotating Cone With ThreeJS/3D Rotating Cone With ThreeJS.html">
-                [ThreeJS] 3D Rotating Cone <small>With control Interface</small></a></li>
+                [ThreeJS] 3D Cone</a></li>
         <li><a href="3D Rotating TorusKnot With ThreeJS/3D Rotating TorusKnot With ThreeJS.html">
-                [ThreeJS] 3D Rotating TorusKnot <small>With control Interface</small></a></li>
+                [ThreeJS] 3D TorusKnot</a></li>
         <li><a href="Interactive 3D Cube with ThreeJS/Interactive 3D Cube with Three.js.html">
                 [ThreeJS] Interactive 3D Cube</a></li>
-        <li><a href="3D Point Cloud Viewer with ThreeJS/3D Point Cloud Viewer with Three.js.html">
-                [ThreeJS] 3D Point Cloud Viewer</a></li>
+        <!-- <li><a href="3D Point Cloud Viewer with ThreeJS/3D Point Cloud Viewer with Three.js.html">
+                [ThreeJS] 3D Point Cloud Viewer</a></li> -->
         <li><a href="Chaos/Chaos1.html">Chaos 1</a></li>
-        <li><a href="img opacity and mouse movement and scroll/img opacity and mouse movement and scroll.html">
-                img opacity and mouse movement and scroll</a></li>
+        <li><a href="img opacity and mouse movement and scroll/img opacity and mouse movement and scroll.html">opacity,
+                mouse movement, scroll</a></li>
         <li><a href="Chaos/Chaos2.html">Chaos 2</a></li>
         <li><a href="moveable doge/index.html">moveable doge</a></li>
-        <li><a href="flooded/flooded.html">flooded</a></li>
+        <li><a href="flooded/flooded.html">flooded page</a></li>
         <li><a href="Pixel Art from Arrays/index.html">pixel art from arrays</a></li>
-        <li><a href="Arrays from Pixel Art/index.html">arrays from pixel art</a></li>
+        <li><a href="DivRuptor/index.html">DivRuptor</a></li>
         <li><a href="ColorThief/index.html">trying out color-thief</a></li>
         <li><a href="accidental mosaic/index.html"><small>accidental</small> mosaic</a></li>
         <li><a href="linkspace/index.html">linkspace</a></li>
+        <li><a href="https://icodeweb.github.io/rgb-generator/">rgb generator</a></li>
         <li><a href="X3DOM/HelloX3DOM.html">HelloX3DOM</a></li>
+        <li><a href="https://icodeweb.github.io/3dataSheets/">3Data Sheets</a></li>
+        <li><a href="https://icodeweb.github.io/electronic-dream/">electronic-dream</a></li>
+        <li><a href="https://butterchurn-ivqy.vercel.app/">butterchurn playground</a></li>
     </ul>
-    <div class="bottomLine">
-        <small>created by</small> <br>
-        <a id="myLink" href="https://github.com/icodeweb" target="_blank" rel="noopener noreferrer">Ibrahim
-            Ismail</a>
-    </div>
     <div id="winamp"></div>
 
-    <script src="http://www.x3dom.org/download/x3dom.js"></script>
+
+
     <script src="https://unpkg.com/webamp"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script src="/X3DOM/x3dom.js"></script>
     <script>
         const winampElemnt = document.getElementById("winamp")
         const webamp = new Webamp({
@@ -116,7 +101,7 @@
 
         let typed = new Typed('#title', {
             strings: ['Web is the coolest canvas ever.',],
-            typeSpeed: 50,
+            typeSpeed: 100,
             showCursor: false,
         });
     </script>
